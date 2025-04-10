@@ -1,0 +1,7 @@
+match 3 or more tiles along x-axis.
+and it is so, because i stored board tiles in 1 D array (it should be stored in 2 D array), thus it was difficult to navigate through it, and write code for it.
+
+
+"controls"
+select the tiles using "space" to swap
+hover over the board using w,a,s,d.
