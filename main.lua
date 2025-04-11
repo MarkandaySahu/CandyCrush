@@ -44,7 +44,9 @@ end
 function love.update(dt)
     if play == true then
         Time = Time - dt
-
+        if Time < 0 then
+            love.event.quit()
+        end
         board:match_remove(board.tiles[1].val)
         board:insertTiles()
         bg_scroll = (bg_scroll + bg_scroll_speed * dt) % 998.4
@@ -167,7 +169,7 @@ function love.draw()
         love.graphics.setColor(0,0,0)
         love.graphics.setFont(love.graphics.newFont(24))
         love.graphics.printf("match 3 or more tiles along x-axis.",400,love.graphics.getHeight()/2-240,love.graphics.getWidth(),"center")
-        love.graphics.printf("Score: "..board.score,400,love.graphics.getHeight()/2-140,love.graphics.getWidth(),"center")
+        love.graphics.printf("Score: "..board.score.."  ".."Time: "..math.floor(Time),400,love.graphics.getHeight()/2-140,love.graphics.getWidth(),"center")
 
         love.graphics.setColor(1,1,1)
 
@@ -181,6 +183,7 @@ function love.draw()
         love.graphics.setColor(105/255,196/255,164/255)
 
         --buttons
+        love.graphics.setFont(love.graphics.newFont(24))
         love.graphics.rectangle("fill",love.graphics.getWidth()/2-120,love.graphics.getHeight()/2-50,240,90)
         love.graphics.rectangle("fill",love.graphics.getWidth()/2-120,love.graphics.getHeight()/2+50,240,90)
         love.graphics.setColor(1,1,1)
