@@ -14,6 +14,7 @@ end
 function love.load()
     math.randomseed(os.time())
     background = love.graphics.newImage("graphics/background.png")
+    background2 = love.graphics.newImage("graphics/background.png")
     bg_scroll = 0
     bg_scroll_speed = 50
 
@@ -49,7 +50,7 @@ function love.update(dt)
         end
         board:match_remove(board.tiles[1].val)
         board:insertTiles()
-        bg_scroll = (bg_scroll + bg_scroll_speed * dt) % 998.4
+        bg_scroll = (bg_scroll + bg_scroll_speed * dt) % 1920
 
         b_Index = board:box_index()
     end
@@ -162,6 +163,7 @@ end
 function love.draw()
     if play == true then
         love.graphics.draw(background,-bg_scroll,0,0,2.85,2.85)
+        love.graphics.draw(background2,-bg_scroll +1920,0,0,2.85,2.85)
         board:draw()
         
         love.graphics.setColor(1,1,150/255)
